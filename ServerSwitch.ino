@@ -65,11 +65,11 @@ void setup() {
     // Attempt to auto-connect, if it fails, it will create a portal for users to input credentials
     if (!wifiManager.autoConnect("PumpAutoServer", "1234")) {
         Serial.println("Failed to connect and hit timeout");
-        ESP.reset(); // Restart ESP if connection fails
         delay(500);
         digitalWrite(wifi_led, LOW);  // Turns on wifi indicator LED
         delay(500);
         digitalWrite(wifi_led, HIGH);  // Turns off wifi indicator LED
+        ESP.restart(); // Restart ESP if connection fails
     }
 
     Serial.println("Connected to Wi-Fi!");
